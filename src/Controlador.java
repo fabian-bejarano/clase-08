@@ -19,9 +19,14 @@ public class Controlador implements ActionListener{
     } 
 
     public void actionPerformed(ActionEvent evt) {
-        modelo.setNumeroUno(Integer.parseInt (vista.txtCampo1.getText()));
-        modelo.setNumeroDos(Integer.parseInt (vista.txtCampo1.getText()));
-        modelo.sumar();
-        
+        try{
+            modelo.setNumeroUno(Integer.parseInt (vista.txtCampo1.getText()));
+            modelo.setNumeroDos(Integer.parseInt (vista.txCampo2.getText()));
+            modelo.sumar();
+            vista.txtRespuesta.setText(Integer.toString (modelo.getResultado()));
+        }catch(NumberFormatException e){
+            System.out.println(e);
+            vista.mensajeError("Debe digitar numeros enteros");
+        }
     }
 }
